@@ -8,12 +8,14 @@ import redisCache from "../DB/redis.config.js";
 const router = Router();
 
 // Auth Routes
-router.post("/auth/register", AuthController.register)
-router.post("/auth/login", AuthController.login)
+router.post("/auth/register", AuthController.register);
+router.post("/auth/login", AuthController.login);
+router.get("/send-email", AuthController.sendTestEmail);
+
 
 // Profile Routes
-router.get("/profile", authMiddleware, ProfileController.index)
-router.put("/profile/:id", authMiddleware, ProfileController.update)
+router.get("/profile", authMiddleware, ProfileController.index);
+router.put("/profile/:id", authMiddleware, ProfileController.update);
 
 // News Route
 router.get("/news", redisCache.route(), NewsController.index);
